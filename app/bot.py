@@ -1,6 +1,5 @@
 import asyncio
 import logging
-import random
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ForceReply
 from telegram.constants import ParseMode
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler, ContextTypes, filters
@@ -52,9 +51,6 @@ async def update_pending_positions(app):
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     lang = db.get_lang(user_id) or DEFAULT_LANG
-    
-    if not db.get_user_usage(user_id):
-        pass 
 
     await update.message.reply_text(
         T("welcome", lang),
