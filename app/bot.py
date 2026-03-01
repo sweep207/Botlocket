@@ -7,8 +7,6 @@ from app.config import *
 from app import database as db
 from app.services import locket, nextdns
 
-keep_alive()  # Khởi động web server
-
 logger = logging.getLogger(__name__)
 
 request_queue = asyncio.Queue()
