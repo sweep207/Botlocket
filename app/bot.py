@@ -6,6 +6,9 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Cal
 from app.config import *
 from app import database as db
 from app.services import locket, nextdns
+from keep_alive import keep_alive
+
+keep_alive()  # Khởi động web server
 
 logger = logging.getLogger(__name__)
 
