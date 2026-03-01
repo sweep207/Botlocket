@@ -28,6 +28,22 @@ if ENV_PATH.exists():
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 NEXTDNS_KEY = os.environ.get("NEXTDNS_KEY")
 
+from telegram import Update
+from telegram.ext import CommandHandler, MessageHandler, Filters, CallbackContext
+
+# Hàm nhận ảnh và in file_id ra console
+def get_photo_id(update: Update, context: CallbackContext):
+    if update.message.photo:
+        photo = update.message.photo[-1]  # ảnh có độ phân giải cao nhất
+        file_id = photo.file_id
+        update.message.reply_text(f"📸 File ID của ảnh này là:\n`{file_id}`", parse_mode="Markdown")
+        print("Ảnh có file_id:", file_id)
+    else:
+        update.message.reply_text("Không thấy ảnh nào trong tin nhắn này 😅")
+
+# Đăng ký handler
+dispatcher.add_handler(MessageHandler(Filters.photo, get_photo_id))
+
 ADMIN_ID = 5645750335
 NUM_WORKERS = 1
 DONATE_PHOTO = "AgACAgUAAxkBAAEhBOdpjtu4_D_90mzmM3ax-jLUQbW7HwACjA5rGyK6eFQz2Vzy6zHTMwEAAwIAA3kAAzoE"
