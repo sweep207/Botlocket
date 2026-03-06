@@ -59,6 +59,7 @@ TEXTS = {
             f"{E_SUCCESS} <b>Locket Gold Activator</b>\n\n"
             f"Chào mừng bạn đến với hệ thống kích hoạt Locket Gold tự động.\n"
             f"Vui lòng chọn ngôn ngữ hoặc sử dụng các nút bên dưới để bắt đầu."
+            f"Liên hệ <b>Admin</b>: @sweep207."
         ),
         "menu_msg": (
             f"{E_MENU} <b>Bảng điều khiển chính</b>\n\n"
