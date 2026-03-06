@@ -58,7 +58,7 @@ TEXTS = {
         "welcome": (
             f"{E_SUCCESS} <b>Locket Gold Activator</b>\n\n"
             f"Chào mừng bạn đến với hệ thống kích hoạt Locket Gold tự động.\n"
-            f"Vui lòng chọn ngôn ngữ hoặc sử dụng các nút bên dưới để bắt đầu."
+            f"Vui lòng chọn ngôn ngữ hoặc sử dụng các nút bên dưới để bắt đầu.\n"
             f"Liên hệ <b>Admin</b>: @sweep207."
         ),
         "menu_msg": (
@@ -131,7 +131,8 @@ TEXTS = {
         "welcome": (
             f"{E_SUCCESS} <b>Locket Gold Activator</b>\n\n"
             f"Welcome to the automated Locket Gold activation assistant.\n"
-            f"Please select your preferred language or use the menu below to get started."
+            f"Please select your preferred language or use the menu below to get started.\n"
+            f"Contacs <b>Admin</b>: @sweep207."
         ),
         "menu_msg": (
             f"{E_MENU} <b>Main Control Panel</b>\n\n"
