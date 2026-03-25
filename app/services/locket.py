@@ -109,7 +109,7 @@ async def inject_gold(uid, token_config, log_callback=None):
     is_sandbox = token_config['is_sandbox']
     
     body = {
-        "product_id": "locket_199_1m", 
+        "product_id": "com.locket.pro.yearly", 
         "fetch_token": fetch_token, 
         "app_transaction": app_transaction,
         "app_user_id": uid, 
