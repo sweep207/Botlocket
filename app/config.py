@@ -208,7 +208,7 @@ def T(key, lang=None):
         lang = DEFAULT_LANG
     return TEXTS.get(lang, TEXTS["VI"]).get(key, key)
    
- FAKE_RESPONSE = {
+FAKE_RESPONSE = {
     "request_date_ms": int(datetime.now().timestamp() * 1000),
     "request_date": datetime.utcnow().isoformat() + "Z",
     "subscriber": {
