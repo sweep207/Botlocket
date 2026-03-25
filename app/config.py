@@ -1,7 +1,3 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
-import json
-from datetime import datetime
 import os
 from pathlib import Path
 
@@ -211,47 +207,3 @@ def T(key, lang=None):
         lang = DEFAULT_LANG
     return TEXTS.get(lang, TEXTS["VI"]).get(key, key)
     
-app = FastAPI()
-
-# Fake data unlock pro vĩnh viễn (adjust theo response thật của Locket nếu bạn capture được)
-FAKE_RESPONSE = {
-    "request_date_ms": int(datetime.now().timestamp() * 1000),
-    "request_date": datetime.utcnow().isoformat() + "Z",
-    "subscriber": {
-        "original_app_user_id": "premium_vũ_2026",
-        "first_seen": "2024-01-01T00:00:00Z",
-        "last_seen": datetime.utcnow().isoformat() + "Z",
-        "subscriptions": {},
-        "entitlements": {
-            "pro": {
-                "expires_date": "2099-12-31T23:59:59Z",
-                "expires_date_ms": 4102447990000,
-                "product_identifier": "com.locket.pro.yearly",
-                "is_active": True,
-                "will_renew": True,
-                "period_type": "normal",
-                # Cập nhật ngày mua sau ngày 13/03/2026
-                "latest_purchase_date": "2026-03-14T00:00:00Z", 
-                "original_purchase_date": "2024-01-01T00:00:00Z"
-            }
-        },
-        "entitlement": {"pro": True}
-    }
-}
-
-@app.post("/v1/receipts")
-@app.post("/v1/subscribers/{app_user_id}/receipts")
-async def fake_post_receipts(request: Request):
-    # Parse body nếu cần (nhưng thường chỉ cần trả fake success)
-    return JSONResponse(content=FAKE_RESPONSE, status_code=200)
-
-@app.get("/v1/subscribers/{app_user_id}")
-async def fake_get_subscriber(app_user_id: str):
-    return JSONResponse(content=FAKE_RESPONSE, status_code=200)
-
-# Catch-all cho các path khác (trả 200 để tránh error)
-@app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE"])
-async def catch_all(path: str, request: Request):
-    if "receipts" in path or "subscribers" in path:
-        return JSONResponse(content=FAKE_RESPONSE, status_code=200)
-    return JSONResponse({"message": "OK"}, status_code=200)
