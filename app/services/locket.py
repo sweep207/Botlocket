@@ -3,7 +3,7 @@ import json
 import re
 import time
 import asyncio
-from app.config import TOKEN_SETS # Import new structure
+from app.config import TOKEN_SETS, FAKE_RESPONSE # Import new structure
 
 HEADERS = {
     'Host': 'api.revenuecat.com',
